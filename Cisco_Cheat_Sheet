@@ -99,15 +99,15 @@ sh clock detail :                                  Montre la source de l'horloge
 
 MISE EN PLACE DU NAT :
 ************************
-interface nom_inter :                              Mode conf int
-ip address @_IP Masque                             Attribuer une IP et Masque
-no shutdown :                                      Activer l'int
+interface nom_inter :                                      Mode conf int
+ip address @_IP Masque :                                   Attribuer une IP et Masque
+no shutdown :                                              Activer l'int
 
-ip route 0.0.0.0 0.0.0.0 IP_Gateway :              Indique la route vers un réseau inconnu du R
-end :                                              Quitter
-
-ip access-list standard NAT_INTERNET_VLAN2 :       Configuration du NAT pour VLAN 2
-permit IP_Réseau_vlan2 masque_inverser :                    Permettre au réseau du vlan2 d'aller sur internet
+ip route 0.0.0.0 0.0.0.0 IP_Gateway :                       Indique la route vers un réseau inconnu du R
+end :                                                       Quitter
+ 
+ip access-list standard NAT_INTERNET_VLAN2 :                 Configuration du NAT pour VLAN 2
+permit IP_Réseau_vlan2 masque_inverser :                     Permettre au réseau du vlan2 d'aller sur internet
 exit
 
 Outside et Inside :
@@ -126,9 +126,13 @@ routeur1(config-if)#exit
 routeur1(config)#ip nat inside source list NAT_INTERNET_VLAN2 interface GigabitEthernet0/1 overload
 
 
+REDIRECTION :
+**************
+ip nat inside source static @_IP_Serv IP_Outside_R :               Redirige les paquets ext vers l'ip sur serveur via l'int ext du routeur
+end
 
-
-
+ip nat inside source static tcp @_IP_Serv 80 IP_Outside_R 80 :     Idem en spécifiant le port si c un Serv Web par exemple
+end
 
 
 
