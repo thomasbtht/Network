@@ -1,1 +1,32 @@
 
+COMMANDE CISCO :
+*******************
+enable :                                      Mode privilégier
+configure terminal :                          Mode conf global
+interface FastEthernet 0/1 :                  Mode conf int
+hostname nom_hote :                           Donner un nom à l'hote
+hostname ? :                                  Afficher l'aide de la commande hostname
+
+show running-config :                         Afficher la conf
+banner login % :                              Ajouter une bannière
+show interfaces :                             Afficher les int
+no shutdown :                                 Activer l'int
+ip address @_IP Masque :                      Attribuer une IP et un masque
+copy running-config startup-config :          Save les modifs
+
+LES VLAN :
+***********
+vlan 1 :                                       Créer le vlan 1
+no vlan 1 :                                    Supprimer le vlan 1
+
+Configuration d'un vlan :
+===========================
+switch(config)# vlan 2 (pour entrer en mode configuration vlan)
+
+switch(config-vlan)# name e-commerce (pour lui donner un nom)
+
+switch(config-vlan)# state active
+
+switch(config-vlan)# no shutdown (pour l’activer)
+
+
