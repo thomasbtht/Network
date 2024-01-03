@@ -157,6 +157,55 @@ end
 show spanning-tree :                             Check la conf 
 
 
+PROTOCOLE DE ROUTAGE :
+***********************
+2 types de protocoles de routage :
+
+    À état de lien. Les caractéristiques des routeurs : connaissance du réseau, convergence rapide, gourmande en ressource.
+
+    À vecteur distance : Les caractéristiques des routeurs : pas de connaissance du réseau ni de tous leurs voisins, convergence lente, peu gourmande en ressource.
+
+
+EIGRP (Enhanced Interior Gateway Routing Protocol) :
+======================================================
+    EIGRP résout un des problèmes majeurs des protocoles de routage à vecteur de distance, celui des boucles (comme pour les switchs). S’il peut le faire, 
+    c’est qu’il a connaissance du réseau et non pas seulement de ses voisins directs (comme un protocole à état de lien).
+
+    La convergence des informations est relativement rapide comparé à d’autres protocoles de la même famille (RIP, Routing Information Protocol).
+
+    Il utilise la métrique, en prenant en compte la bande passante et le délai, et non pas les sauts (d’où le nom d’hybride).
+
+    Il possède, en plus d’une route vers le plus court chemin, une seconde route de secours. Ce qui est très efficace lors de panne. Notez qu’il est le seul à avoir cette route de secours. 
+
+    Il peut faire du load-balancing sur des bandes passantes égales ou inégales (que deux câbles n’est pas la même capacité), ce qu’il est le seul à faire.
+
+    Il a une distance administrative de 90.
+
+
+
+OSPF (Open Shortest Path First) :
+===================================
+    Avec OSPF, chaque routeur connaît son voisinage, mais aussi la totalité des routeurs présents dans son réseau (ou système autonome).
+
+    OSPF choisit la meilleure route possible vers un réseau grâce à l’algorithme de Dijkstra. Il utilise comme métrique la bande passante, 
+    mais il est possible de modifier manuellement cette métrique pour influencer l’algorithme.
+
+    OSPF est capable de faire du load-balancing seulement si les liens ont la même bande passante.
+
+    Les messages « Hello » sont envoyés toutes les 10 secondes, si un routeur ne reçoit pas 4 messages d’affilés, il considère que le chemin est tombé et change directement sa topologie. 
+    Conséquence : la convergence est très rapide.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
