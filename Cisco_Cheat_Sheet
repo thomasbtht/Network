@@ -29,4 +29,17 @@ switch(config-vlan)# state active
 
 switch(config-vlan)# no shutdown (pour l’activer)
 
+Attribuer un port :
+=====================
+switch(config)# interface gigabitethernet 0/0/0 (on passe sur l’interface voulue)
+
+switch(config-if)# switchport access vlan 2 (on ajoute le VLAN)
+
+Configuration du mode Trunk :
+===============================
+switch1# configure terminal
+switch1(config)# interface GigabitEthernet 0/1
+switch1(config-if)#switchport trunk encapsulation dot1q
+switch1(config-if)# switchport mode trunk
+switch1(config-if)# switchport trunk allow vlan 2-3
 
