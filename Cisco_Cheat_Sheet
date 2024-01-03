@@ -135,9 +135,26 @@ ip nat inside source static tcp @_IP_Serv 80 IP_Outside_R 80 :     Idem en spéc
 end
 
 
+MISE EN PLACE SPANNING-TREE :
+*******************************
+conf t
+spanning-tree vlan 1 :                         Activer le protocole
+end
+
+Switch 2 :
+============
+conf t
+spanning-tree vlan 1 root primary :            Définir comme premier point de passage
+end
+
+Switch 3 :
+============
+conf t
+spanning-tree vlan 1 root secondary :           Définir comme second point de passage
+end
 
 
-
+show spanning-tree :                             Check la conf 
 
 
 
