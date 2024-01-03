@@ -181,6 +181,9 @@ EIGRP (Enhanced Interior Gateway Routing Protocol) :
 
     Il a une distance administrative de 90.
 
+show ip eigrp neighbors :           Permet de voir son voisinage
+show ip eigrp neighbors :           Permet de voir toutes les routes du réseau
+show ip route :                     Voir les meilleures route choisie
 
 
 OSPF (Open Shortest Path First) :
