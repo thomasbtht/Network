@@ -199,7 +199,7 @@ show ip route :                     Voir les meilleures route choisie
 
 MISE EN PLACE :
 *****************
-(Exemple pris sur openclassroom : https://openclassrooms.com/fr/courses/2557196-administrez-une-architecture-reseau-avec-cisco/5135486-configurez-eigrp )
+(Exemple pris sur openclassroom : https://user.oc-static.com/upload/2021/07/21/16268891402245_OSPF.PNG )
 
 Config de R2 :
 ***************
@@ -242,21 +242,50 @@ OSPF (Open Shortest Path First) :
     Les messages « Hello » sont envoyés toutes les 10 secondes, si un routeur ne reçoit pas 4 messages d’affilés, il considère que le chemin est tombé et change directement sa topologie. 
     Conséquence : la convergence est très rapide.
 
+MISE EN PLACE :
+*****************
+(Exemple pris sur openclassroom : https://user.oc-static.com/upload/2021/07/21/16268891402245_OSPF.PNG )
 
+Config R2 :
+************
+routeur2(config)#router ospf 1
+routeur2(config-router)#network 223.0.0.0 0.0.0.255 area 0
+routeur2(config-router)#network 223.0.1.0 0.0.0.255 area 0
+routeur2(config-router)#network 223.0.2.0 0.0.0.255 area 
 
+Config R3 :
+************
+routeur3(config)#router ospf 1
+routeur3(config-router)#network 223.0.2.0 0.0.0.255 area 0
+routeur3(config-router)#network 223.0.3.0 0.0.0.255 area 0
+routeur3(config-router)#end
 
+Config R4 :
+************
+routeur4(config)#router ospf 1
+routeur4(config-router)#network 223.0.1.0 0.0.0.255 area 0
+routeur4(config-router)#network 223.0.3.0 0.0.0.255 area 0
+routeur4(config-router)#network 223.0.4.0 0.0.0.255 area 0
+routeur4(config-router)#end
 
+Ajout d'une seconde zone :
+****************************
+Topologie : https://user.oc-static.com/upload/2021/07/21/16268898541866_OSPF%202.PNG
 
+ABR(config)#router ospf 1
+ABR(config-router)#network 223.0.4.0 0.0.0.255 area 0
+ABR(config-router)#network 223.0.10.0 0.0.0.255 area 1
+ABR(config-router)#exit
 
+Vérification :
+***************
+BOX#show ip route
 
+BOX#show ip ospf database
 
+ABR#sh ip protocols
 
-
-
-
-
-
-
+ABR#sh ip ospf database router 223.0.10.1
 
 
 
