@@ -197,6 +197,38 @@ show ip eigrp neighbors :           Permet de voir son voisinage
 show ip eigrp neighbors :           Permet de voir toutes les routes du réseau
 show ip route :                     Voir les meilleures route choisie
 
+MISE EN PLACE :
+*****************
+(Exemple pris sur openclassroom : https://openclassrooms.com/fr/courses/2557196-administrez-une-architecture-reseau-avec-cisco/5135486-configurez-eigrp )
+
+Config de R2 :
+***************
+routeur2(config-router)#no auto-summary
+routeur2(config-router)#network 223.0.0.0
+routeur2(config-router)#network 223.0.1.0
+routeur2(config-router)#network 223.0.2.0
+
+Config de R3 :
+***************
+routeur3(config)#router eigrp 1
+routeur3(config-router)#no auto-summary
+routeur3(config-router)#network 223.0.2.0
+routeur3(config-router)#network 223.0.3.0
+
+Config de R4 :
+***************
+routeur4(config)#router eigrp 1 
+routeur4(config-router)#no auto-summary 
+routeur4(config-router)#network 223.0.1.0 
+routeur4(config-router)#network 223.0.3.0 
+routeur4(config-router)#network 223.0.5.0
+
+Config de R1 :
+***************
+routeur1(config)#router eigrp 1
+routeur1(config-router)#no auto-summary
+routeur1(config-router)#network 223.0.0.0
+
 
 OSPF (Open Shortest Path First) :
 ===================================
