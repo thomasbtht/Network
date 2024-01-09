@@ -7,7 +7,7 @@
                               			5 ....................................................................... REDIRECTION
                               			6 ....................................................................... MISE EN PLACE SPANNING-TREE
                               			7 ....................................................................... PROTOCOLE DE ROUTAGE
-                              			
+                              			8 ....................................................................... SECURISATION
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -286,6 +286,56 @@ BOX#show ip ospf database
 ABR#sh ip protocols
 
 ABR#sh ip ospf database router 223.0.10.1
+
+SECURISATION :
+****************
+routeur1(config)#enable algorithm-type sha256 secret motDePasse
+
+Ajout de user :
+****************
+routeur1(config)#username root secret motDePasse
+routeur1(config)#username root privilege 15 (15 = privilège max)
+
+Config du port con :
+**********************
+routeur1#conf t
+routeur1(config)#line con 0
+routeur1(config-line)#password motDePasse
+routeur1(config-line)#login
+routeur1(config-line)#end
+
+Config du SSH :
+*****************
+routeur1(config)#ip domain-name mondomain.lan
+
+routeur1(config)#crypto key generate rsa
+The name for the keys will be: routeur1.mondomain.lan
+Choose the size of the key modulus in the range of 360 to 4096 for your
+General Purpose Keys. Choosing a key modulus greater than 512 may take
+a few minutes.
+How many bits in the modulus [512]: 2048
+% Generating 2048 bit RSA keys, keys will be non-exportable...
+[OK] (elapsed time was 2 seconds
+
+routeur1(config)#ip ssh version 2
+routeur1(config)#line vty 0 4
+routeur1(config-line)#transport input ssh
+routeur1(config-line)#login local
+routeur1(config-line)#end
+
+routeur2#ssh -l root 223.0.0.1
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
