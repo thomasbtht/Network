@@ -36,7 +36,8 @@ top : affiche le gestionnaire de tâche
 htop : idem mais avec des couleurs
 kill -2 : tuer un processus
 kill -9 : tuer un processus et déconnecte de root (à utiliser en dernière options)
-
+ss : affiche qu'elle port est ouvert sur la machine
+lsof : relève tout les fichiers ouvert
 
 
 
