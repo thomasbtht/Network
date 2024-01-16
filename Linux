@@ -22,6 +22,23 @@ et                              : Trace d'auth
 /var/log/secure(pour RedHat)
 /var/log/wtmp : contient l'ensemble des connexions et déconnexions de tous les utilisateurs, contenue en binaire
 last : commande pour lire le fichier en format lisible
+who et w : permettant de relever les comptes connectés
+
+Processus en cours :
+======================
+ps : commande qui permet d'afficher les processus en cours
+ps -ef : affiche tout les processus
+ps -edf toto : affiche les processus lancer par le user toto
+ps -edf --sort=+pmem : affiche les processus qui utilise le + de mémoire
+ps -edf --sort=+pcpu : affiche les processus qui utilise le + de cpu
+ps -edf --forest : affiche la hiérarchie des processus
+top : affiche le gestionnaire de tâche
+htop : idem mais avec des couleurs
+kill -2 : tuer un processus
+kill -9 : tuer un processus et déconnecte de root (à utiliser en dernière options)
+
+
+
 
 
 
