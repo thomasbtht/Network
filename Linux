@@ -7,6 +7,7 @@ scp et sftp : permet de transférer des fichier sur le serveur avec ssh
 scp fichier_source fichier_dest (ex: scp debian11.iso toto@poupli.net:/home/toto) : transfert de fichier de root à toto
 ssh-copy-i -i chemin_clé_rsa fichier_source (ex: ssh-copy-id -i /root/.ssh/id_rsa.pub toto@poupli.net) : partage de la clé sur le serv pour éviter de taper le mdp de toto
 scp -i /root/.ssh/id_rsa.pub toto@poupli.net:/home/toto : partage de la clé directement dans le home de toto
+scp -P 2222 -r home/root toto@poupli.net:/home/toto : Transfert depuis le port 2222 et copy du répertoire /home/root sur le home de toto
 
 
 
