@@ -1,5 +1,7 @@
 Quelque commande utile :
 **************************
+SSH et transfert de fichier :
+===============================
 openssh-server : Package ssh
 ssh-keygen : générer une clé ssh
 ssh-copy-id : partager la clé sur le serveur 
@@ -8,6 +10,20 @@ scp fichier_source fichier_dest (ex: scp debian11.iso toto@poupli.net:/home/toto
 ssh-copy-i -i chemin_clé_rsa fichier_source (ex: ssh-copy-id -i /root/.ssh/id_rsa.pub toto@poupli.net) : partage de la clé sur le serv pour éviter de taper le mdp de toto
 scp -i /root/.ssh/id_rsa.pub toto@poupli.net:/home/toto : partage de la clé directement dans le home de toto
 scp -P 2222 -r home/root toto@poupli.net:/home/toto : Transfert depuis le port 2222 et copy du répertoire /home/root sur le home de toto
+
+Analyse de fichier de trace :
+===============================
+/var/log/ : répertoire des fichiers de trace
+rsyslog :Chaque processus du système proposant au noyau Linux de tracer ses activités déclenche le traitement 
+          de ses informations par un service particulier :rsyslog
+/etc/rsyslog.conf : répertoire ou se trouve le fichier conf de rsyslog
+/var/log/auth.log(pour Debian)
+et                              : Trace d'auth
+/var/log/secure(pour RedHat)
+/var/log/wtmp : contient l'ensemble des connexions et déconnexions de tous les utilisateurs, contenue en binaire
+last : commande pour lire le fichier en format lisible
+
+
 
 
 
